@@ -41,8 +41,8 @@ We use the `bert-base-chinese` architecture. Since the file is large, please dow
 
 ```
 python src/train.py \
---data_dir /path/to/your/data/ \          # 修改为您的数据目录路径
---bert_path /path/to/bert/model/ \        # 修改为BERT模型路径
+--data_dir /path/to/your/data/ \          # Change to your data directory path
+--bert_path /path/to/bert/model/ \        # Change to BERT model path
 --epochs 10 \
 --batch_size 32
 ```
