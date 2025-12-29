@@ -5,28 +5,44 @@
 [![Python](https://img.shields.io/badge/Python-3.8+-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
 [![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)](https://pytorch.org/)
 
-
-
-
 </div>
 
-### The official implementation of **BrailleTrans**.
-<br/>
-
-<div id="top" align="center">
-<p align="center">
-<img src="figure/Framework.png" width=90% />
-</p>
-</div>
-
-## ✨ 简介
-
+## Introduction
 BrailleTrans is an innovative Chinese-to-Braille translation system that integrates pre-trained language models with a mixture of experts network to achieve high-precision Chinese Braille conversion.
 
-### Conda Environment of **[你的项目名称]**
-
+## Quick Start
+### Conda Environment of BrailleTrans
 ```bash
 # Create and activate conda environment
 conda create -n BrailleTrans python=3.10.18 -y
 conda activate BrailleTrans
+```
+
+### Clone Project
+```bash
+git clone https://github.com/CdpLab/BrailleTrans.git 
+cd BrailleTrans
+```
+
+### Install Dependencies
+```bash
+pip install -r requirements.txt
+pip install torch==2.8.0 torchaudio==2.1.0
+```
+
+We use the `bert-base-chinese` architecture. Since the file is large, please download it from [here](https://huggingface.co/google-bert/bert-base-chinese). Then put it in the `/down` folder. The file structure is:
+```
+·
+├── down
+·   ├── configs
+    └── bert-base-chinese
+```
+
+
+```
+python src/train.py \
+--data_dir /path/to/your/data/ \          # 修改为您的数据目录路径
+--bert_path /path/to/bert/model/ \        # 修改为BERT模型路径
+--epochs 10 \
+--batch_size 32
 ```
