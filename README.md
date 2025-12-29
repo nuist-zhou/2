@@ -29,7 +29,6 @@ cd BrailleTrans
 pip install -r requirements.txt
 pip install torch==2.8.0 torchaudio==2.1.0
 ```
-
 We use the `bert-base-chinese` architecture. Since the file is large, please download it from [here](https://huggingface.co/google-bert/bert-base-chinese). Then put it in the `/down` folder. The file structure is:
 ```
 ·
@@ -37,8 +36,15 @@ We use the `bert-base-chinese` architecture. Since the file is large, please dow
 ·   ├── configs
     └── bert-base-chinese
 ```
-
-
+### Data Preparation
+The dataset is placed in the `/data` directory.
+```
+·
+├── data
+·  
+```
+## Training
+Use the following command to start training your BrailleTrans model:
 ```
 python src/train.py \
 --data_dir /path/to/your/data/ \          # Change to your data directory path
@@ -46,3 +52,14 @@ python src/train.py \
 --epochs 10 \
 --batch_size 32
 ```
+## Result
+<table>
+  <tr>
+   <td><strong>Model</strong></td>  <td><strong>Train Loss</strong></td>
+   <td><strong>Validation Loss</strong></td>  <td><strong>BLEU</strong></td>
+  </tr>
+  <tr><td>Transformer(Baseline)</td><td>0.057</td><td>0.042</td><td>86.51%</td></tr>
+  <tr><td>+ MoE</td><td>0.056</td><td>0.040</td><td>92.12%</td></tr>
+  <tr><td>+ BERT</td><td>0.038</td><td>0.031</td><td>97.02%</td></tr>
+  <tr><td>+ BERT + MoE</td><td>0.033</td><td>0.032</td><td>98.15%</td></tr>
+</table>
